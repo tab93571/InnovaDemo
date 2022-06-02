@@ -13,7 +13,7 @@ public enum ResponseEnum {
     ValidationSequenceOfCharactersFollowedByTheSameSequence(1005,"sequence of  characters can not  be followed by the same sequence"),
 
     ValidationCanNotFindService(2001,"the validation service you require is not in use"),
-    ValidationServiceIsNotValidationService(2002,"service found is not validationService");
+    ValidationServiceIsNotValidationService(2002,"service found is not validationServiceaaaaaaaaaaaaaaaaa");
 
     private Integer code;
     private String message;

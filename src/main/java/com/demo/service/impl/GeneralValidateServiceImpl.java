@@ -11,7 +11,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-import util.ResponseUtil;
+import com.demo.util.ResponseUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;

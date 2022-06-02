@@ -5,7 +5,7 @@ import com.demo.request.ValidateRequest;
 import com.demo.response.Response;
 import com.demo.service.ValidateService;
 import org.springframework.stereotype.Service;
-import util.ResponseUtil;
+import com.demo.util.ResponseUtil;
 
 import java.util.List;
 

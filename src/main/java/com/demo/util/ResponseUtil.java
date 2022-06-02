@@ -1,4 +1,4 @@
-package util;
+package com.demo.util;
 
 import com.demo.enums.ResponseEnum;
 import com.demo.response.Response;
