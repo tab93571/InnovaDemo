@@ -3,6 +3,13 @@ package com.request;
 import java.util.List;
 
 public class DeleteValidateServiceRequest {
+
+    public DeleteValidateServiceRequest(){}
+
+    public DeleteValidateServiceRequest(String serviceName){
+        this.serviceName = serviceName;
+    }
+
     String serviceName;
 
     public String getServiceName() {

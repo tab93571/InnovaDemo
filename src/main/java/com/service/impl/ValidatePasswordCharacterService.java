@@ -19,24 +19,24 @@ public class ValidatePasswordCharacterService implements ValidateService {
 
         String password = request.getPassword();
 
-        int numberOfLowerDigits = 0 ;
-        int numberOfNumericalDigits = 0;
+        int amountOfLowerCharacters = 0 ;
+        int amountOfNumericalDigits = 0;
 
         for(char ch:  password.toCharArray()){
             if(Character.isLowerCase(ch)){
-                numberOfLowerDigits ++;
+                amountOfLowerCharacters ++;
             }else if(Character.isDigit(ch)){
-                numberOfNumericalDigits ++;
+                amountOfNumericalDigits ++;
             }
         }
 
-        if(numberOfLowerDigits == 0){
-            responseList.add(ResponseUtil.error(ResponseEnum.ValidationPasswordNoLowerDigits));
+        if(amountOfLowerCharacters == 0){
+            responseList.add(ResponseUtil.error(ResponseEnum.ValidationPasswordNoLowerCaseLetters));
         }
-        if(numberOfNumericalDigits == 0){
+        if(amountOfNumericalDigits == 0){
             responseList.add(ResponseUtil.error(ResponseEnum.ValidationPasswordNoNumericalDigits));
         }
-        if((numberOfLowerDigits + numberOfNumericalDigits) != password.length()){
+        if((amountOfLowerCharacters + amountOfNumericalDigits) != password.length()){
             responseList.add(ResponseUtil.error(ResponseEnum.ValidationPasswordCharacterNotAllowed));
         }
     }
