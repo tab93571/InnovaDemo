@@ -40,9 +40,9 @@ public class ValidationController {
         return service.getValidateServiceNameInUse();
     }
     @ApiOperation(value = "delete the validation service we are using",notes =
-            "change which validation logic in runtime" +
-            "but if there are multiple pods we need to use redis channel to reach to every pods(send to the service and it publishes and other pods subscribe that channel and operate"+
-            "but when the service restart all the operation will be lost"+
+            "change which validation logic in runtime" + "\n"+
+            "but if there are multiple pods we need to use redis channel to reach to every pods(send to the service and it publishes and other pods subscribe that channel and operate"+ "\n"+
+            "but when the service restart all the operation will be lost"+ "\n"+
             "or we can store a validationService list in redis and we modify that list in redis, every time we run validate method we can check the verificationList in redis and decide if we need to operate that")
     @DeleteMapping(DELETEVALIDATESERVICEINUSE)
     public Response deleteValidateServiceInUse(@RequestBody DeleteValidateServiceRequest req){

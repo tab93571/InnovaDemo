@@ -59,7 +59,7 @@ public class ValidatePasswordCheckRepeatedSequenceServiceUnitTest {
     @Test
     public void testValidatePassOneCharacter(){
 
-        ValidateRequest request = new ValidateRequest("aa1bb");
+        ValidateRequest request = new ValidateRequest("aa1bbcc");
         List<Response> responseList = new ArrayList<>();
         validatePasswordCheckRepeatedSequenceService.validate(request,responseList);
         Assert.assertEquals(0,responseList.size());
