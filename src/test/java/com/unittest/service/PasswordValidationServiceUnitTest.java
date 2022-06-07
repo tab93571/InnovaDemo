@@ -7,7 +7,6 @@ import com.component.PasswordValidationComponent;
 import com.component.impl.PasswordCharacterValidationComponent;
 import com.component.impl.PasswordLengthValidationComponent;
 import com.component.impl.PasswordRepeatedSequenceValidationComponent;
-import com.constant.ValidationConstant;
 import com.enums.ResponseEnum;
 import com.request.ValidationRequest;
 import com.service.impl.PasswordValidationServiceImpl;
@@ -65,7 +64,7 @@ public class PasswordValidationServiceUnitTest {
 
         CommonResult validationPasswordNoLowerCaseLetters = CommonResultUtil.error(ResponseEnum.ValidationPasswordNoLowerCaseLetters);
         CommonResult validationPasswordLengthError = CommonResultUtil.error(ResponseEnum.ValidationPasswordLengthError);
-        CommonResult validationSequenceOfCharactersFollowedByTheSameSequence = CommonResultUtil.error(ResponseEnum.ValidationSequenceOfCharactersFollowedByTheSameSequence);
+        CommonResult validationSequenceOfCharactersFollowedByTheSameSequence = CommonResultUtil.error(ResponseEnum.ValidationPasswordSequenceOfCharactersFollowedByTheSameSequence);
 
 
         Mockito.when(passwordCharacterValidationComponent.validate(any(ValidationRequest.class))).

@@ -10,10 +10,8 @@ public enum ResponseEnum {
     ValidationPasswordNoLowerCaseLetters(1002,"amounts of lowercase letters can not be zero"),
     ValidationPasswordNoNumericalDigits(1003,"amounts of numericalDigits can not be zero"),
     ValidationPasswordCharacterNotAllowed(1004,"doesn't match the required character format"),
-    ValidationSequenceOfCharactersFollowedByTheSameSequence(1005,"sequence of  characters can not  be followed by the same sequence"),
+    ValidationPasswordSequenceOfCharactersFollowedByTheSameSequence(1005,"sequence of  characters can not  be followed by the same sequence");
 
-    ValidationCanNotFindService(2001,"the validation service you require is not in use"),
-    ValidationServiceTypeNotMatch(2002,"service found is not validationService");
 
     private Integer code;
     private String message;

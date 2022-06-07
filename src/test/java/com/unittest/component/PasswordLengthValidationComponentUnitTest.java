@@ -18,6 +18,24 @@ public class PasswordLengthValidationComponentUnitTest {
 
     private PasswordValidationComponent passwordValidationComponent = new PasswordLengthValidationComponent();
 
+    @Test
+    public void testValidatePasswordEmpty(){
+
+        ValidationRequest request = new ValidationRequest("");
+
+        PasswordValidationResult result = passwordValidationComponent.validate(request);
+        List<CommonResult> resultDetails = result.getDetails();
+
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNullOrEmptyError.getCode());
+
+        Assert.assertEquals(false,result.isSuccess());
+
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
+
+    }
+
     /**
      * Password length is under the lower bound
      * the length of testString will be LENGTHLOWERBOUND - 1
@@ -36,13 +54,13 @@ public class PasswordLengthValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordLengthError.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordLengthError.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
 
     }
 
@@ -64,13 +82,13 @@ public class PasswordLengthValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordLengthError.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordLengthError.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
     }
 
     /**

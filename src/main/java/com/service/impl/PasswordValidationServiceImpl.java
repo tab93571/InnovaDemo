@@ -17,10 +17,10 @@ import java.util.*;
 public class PasswordValidationServiceImpl implements PasswordValidationService {
 
 
-    private List<PasswordValidationComponent> passwordValidationComponentList;
+    private List<PasswordValidationComponent> passwordValidationComponents;
 
-    public PasswordValidationServiceImpl(List<PasswordValidationComponent> passwordValidationComponentList){
-        this.passwordValidationComponentList = passwordValidationComponentList;
+    public PasswordValidationServiceImpl(List<PasswordValidationComponent> passwordValidationComponents){
+        this.passwordValidationComponents = passwordValidationComponents;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class PasswordValidationServiceImpl implements PasswordValidationService 
 
         List<CommonResult> passwordValidationDetails = new ArrayList<>();
 
-        for(PasswordValidationComponent passwordValidationComponent : passwordValidationComponentList){
+        for(PasswordValidationComponent passwordValidationComponent : passwordValidationComponents){
             PasswordValidationResult passwordValidationResult = passwordValidationComponent.validate(req);
             if(!passwordValidationResult.isSuccess() && null != passwordValidationResult.getDetails()){
                 passwordValidationDetails.addAll(passwordValidationResult.getDetails());

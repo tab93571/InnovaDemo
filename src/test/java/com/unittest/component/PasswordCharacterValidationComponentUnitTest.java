@@ -12,12 +12,30 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import static com.enums.ResponseEnum.*;
-import static org.mockito.Mockito.mock;
 
 
 public class PasswordCharacterValidationComponentUnitTest {
 
     private PasswordValidationComponent passwordValidationComponent = new PasswordCharacterValidationComponent();
+
+
+    @Test
+    public void testValidateEmpty(){
+
+        ValidationRequest request = new ValidationRequest("");
+
+        PasswordValidationResult result = passwordValidationComponent.validate(request);
+        List<CommonResult> resultDetails = result.getDetails();
+
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNullOrEmptyError.getCode());
+
+        Assert.assertEquals(false,result.isSuccess());
+
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
+
+    }
 
     /**
      * the password is without numerical digits
@@ -33,13 +51,13 @@ public class PasswordCharacterValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordNoNumericalDigits.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNoNumericalDigits.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
 
     }
 
@@ -57,13 +75,13 @@ public class PasswordCharacterValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
 
     }
 
@@ -81,13 +99,13 @@ public class PasswordCharacterValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordCharacterNotAllowed.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordCharacterNotAllowed.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
 
     }
 
@@ -99,20 +117,18 @@ public class PasswordCharacterValidationComponentUnitTest {
 
     @Test
     public void testValidateWithoutNumericalDigitsAndLowercase(){
-
         ValidationRequest request = new ValidationRequest("A");
 
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResponseListCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResponseListCode = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode(),ValidationPasswordNoNumericalDigits.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
-
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode(),ValidationPasswordNoNumericalDigits.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertEquals(expectResponseListCode.size(),actualResponseListCode.size());
-        Assert.assertTrue(actualResponseListCode.containsAll(expectResponseListCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
 
     }
 
@@ -130,13 +146,13 @@ public class PasswordCharacterValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordNoNumericalDigits.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNoNumericalDigits.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
     }
 
     /**
@@ -153,13 +169,13 @@ public class PasswordCharacterValidationComponentUnitTest {
         PasswordValidationResult result = passwordValidationComponent.validate(request);
         List<CommonResult> resultDetails = result.getDetails();
 
-        List<Integer> actualResultDetailsCode = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
-        List<Integer> expectResultDetailsCode = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
+        List<Integer> actualResultDetailCodes = resultDetails.stream().map(detail ->  detail.getCode()).collect(Collectors.toList());
+        List<Integer> expectResultDetailCodes = Arrays.asList(ValidationPasswordNoLowerCaseLetters.getCode(),ValidationPasswordCharacterNotAllowed.getCode());
 
         Assert.assertEquals(false,result.isSuccess());
 
-        Assert.assertTrue(actualResultDetailsCode.containsAll(expectResultDetailsCode));
-        Assert.assertTrue(expectResultDetailsCode.containsAll(actualResultDetailsCode));
+        Assert.assertTrue(actualResultDetailCodes.containsAll(expectResultDetailCodes));
+        Assert.assertTrue(expectResultDetailCodes.containsAll(actualResultDetailCodes));
     }
 
     /**

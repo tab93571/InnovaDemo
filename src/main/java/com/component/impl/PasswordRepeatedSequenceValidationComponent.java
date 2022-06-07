@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import com.util.CommonResultUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.enums.ResponseEnum.ValidationPasswordNullOrEmptyError;
@@ -33,7 +32,7 @@ public class PasswordRepeatedSequenceValidationComponent implements PasswordVali
         String password = request.getPassword();
         int maxSequenceLength = password.length()/2;
 
-        List<List<String>> repeatedCharacterList = new ArrayList<>();
+        List<String> repeatedCharacterList = new ArrayList<>();
 
         for(int sequenceLength = 2 ; sequenceLength <= maxSequenceLength ; sequenceLength ++){
             for(int j = 1 ; j < password.length() ; j ++){
@@ -43,13 +42,13 @@ public class PasswordRepeatedSequenceValidationComponent implements PasswordVali
                   String sequenceFirst =  password.substring(lowerBound,j);
                   String sequenceSecond = password.substring(j,upperBound);
                   if(sequenceFirst.equals(sequenceSecond)){
-                      repeatedCharacterList.add(Arrays.asList(sequenceFirst,sequenceSecond));
+                      repeatedCharacterList.add(sequenceFirst);
                   }
                 }
             }
         }
         if(repeatedCharacterList.size() != 0){
-            passwordValidationDetails.add(CommonResultUtil.error(ResponseEnum.ValidationSequenceOfCharactersFollowedByTheSameSequence,repeatedCharacterList));
+            passwordValidationDetails.add(CommonResultUtil.error(ResponseEnum.ValidationPasswordSequenceOfCharactersFollowedByTheSameSequence,repeatedCharacterList));
         }
         if(0 == passwordValidationDetails.size()){
             passwordValidationResult.setSuccess(true);
