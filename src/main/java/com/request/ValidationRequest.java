@@ -1,10 +1,10 @@
 package com.request;
 
-public class ValidateRequest {
+public class ValidationRequest {
 
-    public ValidateRequest(){}
+    public ValidationRequest(){}
 
-    public ValidateRequest(String password){
+    public ValidationRequest(String password){
         this.password = password;
     }
     private String password;
